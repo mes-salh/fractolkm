@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   julia_helpers_julia.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mes-salh <mes-salh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 00:37:31 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/16 21:34:19 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/08/08 01:23:35 by mes-salh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,11 @@ int	generate_color_julia(int i, t_fractal *julia, int check)
 
 	if (check == 1)
 		return (0);
-	t = (double)i / (double)julia->max_iter;
-	r = (int)(9 * (1 - t) * t * t * t * 255)
-		*log(log(julia->gen_color));
-	g = (int)(15 * (1 - t) * (1 - t) * t * t * 255)
-		*log(log(julia->gen_color));
-	b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255)
-		*log(log(julia->gen_color));
-	return ((r << 16) | (g << 8) | b);
+	t = (double)i / julia->max_iter;
+	r = (int)(9 * (1 - t) * t * t * t * 255);
+	g = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
+	b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+	return (r << 16 | g << 8 | b);
 }
 
 void	my_mlx_pixel_put_julia(t_fractal *julia, int x, int y)
